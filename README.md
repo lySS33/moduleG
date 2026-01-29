@@ -1,5 +1,8 @@
 # moduleG Pavel Skotar moduleC computer 3
 конвеер работает, так же работает кнопка экстренного торможения
+
+<img width="1811" height="1149" alt="image" src="https://github.com/user-attachments/assets/10fc4cf4-f352-409c-88b6-4227aadb1344" />
+
 ##
 **MP4, AVI, MOV, MKV, FLV, WMV**
 Поддерживаются веб-камеры (USB)
