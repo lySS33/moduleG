@@ -1,3 +1,4 @@
+# main.py - обновленная версия с поддержкой видео файлов и камер
 import sys
 import os
 import cv2
@@ -493,7 +494,7 @@ class Arm165RealApp(QMainWindow):
                 f.write("СИСТЕМНАЯ ИНФОРМАЦИЯ:\n")
                 f.write(f"  Состояние видео: {'воспроизводится' if self.is_video_playing else 'остановлено'}\n")
                 f.write(f"  Детекция дефектов: {'включена' if self.is_detecting else 'выключена'}\n")
-                f.write(f"  Конвейер: {'включен' if self.conveyor_enabled else 'выключен'}\n")
+                f.write(f"  MoveOn: {'включен' if self.conveyor_enabled else 'выключен'}\n")
                 f.write(f"  Активные камеры: {len(self.camera_threads)}\n\n")
                 
                 # статистика дефектов
@@ -603,7 +604,7 @@ class Arm165RealApp(QMainWindow):
             self.conveyor_indicator.setStyleSheet("background-color: #ff4444; border-radius: 10px;")
             
             # Добавляем метку состояния
-            self.conveyor_status_label = QLabel("Конвейер: ВЫКЛ", self)
+            self.conveyor_status_label = QLabel("MoveOn: ВЫКЛ", self)
             self.conveyor_status_label.setGeometry(370, 300, 101, 17)
         
         # Если кнопки нет в UI, создаем новую
@@ -797,8 +798,8 @@ class Arm165RealApp(QMainWindow):
         
         if self.conveyor_enabled:
             speed = self.slider_skorost.value() if hasattr(self, 'slider_skorost') else 50
-            self.write_log_message(f"конвейер включен, скорость: {speed}%")
-            self.write_to_log_file(f"Конвейер включен со скоростью {speed}%")
+            self.write_log_message(f"MoveOn включен")
+            self.write_to_log_file(f"MoveOn включен")
             
             # Запускаем таймер для имитации работы конвейера
             self.conveyor_timer.start(1000)  # Обновление каждую секунду
@@ -806,8 +807,8 @@ class Arm165RealApp(QMainWindow):
             # Обновляем индикатор и метку
             self.update_conveyor_status(True, speed)
         else:
-            self.write_log_message("конвейер выключен")
-            self.write_to_log_file("Конвейер выключен")
+            self.write_log_message("MoveOn выключен")
+            self.write_to_log_file("MoveOn выключен")
             
             # Останавливаем таймер
             self.conveyor_timer.stop()
@@ -916,10 +917,10 @@ class Arm165RealApp(QMainWindow):
         # Обновляем метку статуса
         if hasattr(self, 'conveyor_status_label'):
             if is_running:
-                self.conveyor_status_label.setText(f"Конвейер: ВКЛ ({speed}%)")
+                self.conveyor_status_label.setText(f"MoveOn: ВКЛ ({speed}%)")
                 self.conveyor_status_label.setStyleSheet("color: green; font-weight: bold;")
             else:
-                self.conveyor_status_label.setText("Конвейер: ВЫКЛ")
+                self.conveyor_status_label.setText("MoveOn: ВЫКЛ")
                 self.conveyor_status_label.setStyleSheet("color: red; font-weight: bold;")
     
     def select_video_file(self):
