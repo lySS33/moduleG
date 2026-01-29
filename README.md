@@ -1,5 +1,5 @@
 # moduleG Pavel Skotar moduleC computer 3
-konveer
+конвеер работает, так же работает кнопка экстренного торможения
 ##
 **MP4, AVI, MOV, MKV, FLV, WMV**
 Поддерживаются веб-камеры (USB)
