@@ -1,4 +1,3 @@
-# main.py - обновленная версия с поддержкой видео файлов и камер
 import sys
 import os
 import cv2
@@ -559,7 +558,7 @@ class Arm165RealApp(QMainWindow):
         # Ищем существующую кнопку "Stop" для конвейера
         if hasattr(self, 'konveer_stop'):
             # Переименовываем и перекрашиваем существующую кнопку
-            self.konveer_stop.setText("ЭКСТРЕННАЯ ОСТАНОВКА")
+            self.konveer_stop.setText("STOP")
             self.konveer_stop.setStyleSheet("""
                 QPushButton {
                     background-color: #ff4444;
@@ -583,7 +582,7 @@ class Arm165RealApp(QMainWindow):
             self.konveer_stop.setGeometry(520, 270, 151, 25)  # Увеличиваем ширину и сдвигаем вправо
             
             # Создаем отдельную кнопку для обычной остановки
-            self.normal_stop_button = QPushButton("Стоп", self)
+            self.normal_stop_button = QPushButton("Пауза", self)
             self.normal_stop_button.setGeometry(440, 270, 71, 25)
             self.normal_stop_button.setStyleSheet("""
                 QPushButton {
@@ -1261,28 +1260,24 @@ class Arm165RealApp(QMainWindow):
             self.write_to_log_file(f"Камера {camera_id} остановлена")
     
     def start_all_cameras(self):
-        """запуск всех камер"""
         for i in range(3):
             self.start_camera(i)
         self.write_log_message("все камеры запущены")
         self.write_to_log_file("Все камеры запущены")
     
     def stop_all_cameras(self):
-        """остановка всех камер"""
         for camera_id in list(self.camera_threads.keys()):
             self.stop_camera(camera_id)
         self.write_log_message("все камеры остановлены")
         self.write_to_log_file("Все камеры остановлены")
     
     def toggle_all_cameras(self):
-        """включение/выключение всех камер"""
         if len(self.camera_threads) > 0:
             self.stop_all_cameras()
         else:
             self.start_all_cameras()
     
     def process_camera_frame(self, camera_id, frame):
-        """обработка кадра с камеры"""
         # показываем в соответствующем виджете
         if camera_id == 0 and hasattr(self, 'camera1'):
             self.display_camera_frame(frame, self.camera1)
@@ -1408,7 +1403,6 @@ class Arm165RealApp(QMainWindow):
         event.accept()
     
     def save_final_statistics(self):
-        """сохранение финальной статистики"""
         try:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             stats_file = os.path.join(self.save_path, f"final_stats_{timestamp}.txt")
@@ -1451,7 +1445,6 @@ class Arm165RealApp(QMainWindow):
             self.write_to_log_file(f"Ошибка сохранения статистики: {str(e)}")
 
 def main():
-    """главная функция"""
     app = QApplication(sys.argv)
     app.setStyle("Fusion")
     
