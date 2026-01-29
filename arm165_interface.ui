@@ -1480,9 +1480,9 @@
    <widget class="QTextEdit" name="text_session">
     <property name="geometry">
      <rect>
-      <x>670</x>
+      <x>590</x>
       <y>850</y>
-      <width>401</width>
+      <width>481</width>
       <height>251</height>
      </rect>
     </property>
@@ -1923,12 +1923,12 @@
      <rect>
       <x>1360</x>
       <y>950</y>
-      <width>121</width>
+      <width>141</width>
       <height>25</height>
      </rect>
     </property>
     <property name="text">
-     <string>Detect objects</string>
+     <string>Загрузить видео</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_manual_joint_3">
@@ -1936,12 +1936,12 @@
      <rect>
       <x>1360</x>
       <y>980</y>
-      <width>121</width>
+      <width>141</width>
       <height>25</height>
      </rect>
     </property>
     <property name="text">
-     <string>Detect people</string>
+     <string>Пауза</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_manual_joint_4">
@@ -1949,12 +1949,12 @@
      <rect>
       <x>1360</x>
       <y>1010</y>
-      <width>121</width>
+      <width>141</width>
       <height>25</height>
      </rect>
     </property>
     <property name="text">
-     <string>Move On</string>
+     <string>Остановить</string>
     </property>
    </widget>
    <widget class="QPushButton" name="konveer_stop">
